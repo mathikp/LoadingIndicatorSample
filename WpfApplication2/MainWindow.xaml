@@ -1,0 +1,41 @@
+﻿<Window x:Class="WpfApplication2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApplication2"
+        xmlns:toolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    
+    <Grid>
+        <Button Name="btnShow" Height="50" Width="250" VerticalAlignment="Top" Click="BusyIndicator_Click" Content="Show Busy Indicator"/>
+        <toolkit:BusyIndicator Name="BusyIndicator" Loaded="BusyIndicator_Loaded" DisplayAfter="0" IsBusy="False">
+            <toolkit:BusyIndicator.BusyContentTemplate>
+                <DataTemplate>
+                    <StackPanel Height="100" Width="100" Margin="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <MediaElement MediaEnded="myGif_MediaEnded" UnloadedBehavior="Manual" Source="pack://application:,,,/Images/LoadingBlocks.gif"  LoadedBehavior="Play">
+                            <MediaElement.OpacityMask>
+                                <ImageBrush ImageSource="pack://application:,,,/Images/LoadingBlocks.gif"/>
+                            </MediaElement.OpacityMask>
+                        </MediaElement>
+                    </StackPanel>
+                </DataTemplate>
+            </toolkit:BusyIndicator.BusyContentTemplate>
+            <toolkit:BusyIndicator.OverlayStyle>
+                <Style TargetType="Rectangle">
+                    <Setter Property="Fill" Value="Transparent"/>
+                </Style>
+            </toolkit:BusyIndicator.OverlayStyle>
+            <toolkit:BusyIndicator.ProgressBarStyle>
+                <Style TargetType="ProgressBar">
+                    <Setter Property="Visibility" Value="Collapsed"/>
+                </Style>
+            </toolkit:BusyIndicator.ProgressBarStyle>
+            <toolkit:BusyIndicator.Background>
+                <SolidColorBrush Color="Transparent"/>
+            </toolkit:BusyIndicator.Background>
+               
+        </toolkit:BusyIndicator>
+    </Grid>
+</Window>
